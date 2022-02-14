@@ -84,8 +84,8 @@ void selection_sort(int *array, size_t size)
 			tmp2 = array[i];
 			array[i] = tmp;
 			array[k] = tmp2;
+			print_array(array, size);
 		}
-		print_array(array, size);
 		k = 0;
 	}
 }
