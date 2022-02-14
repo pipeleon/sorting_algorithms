@@ -31,8 +31,4 @@ void selection_sort(int *array, size_t size);
 
 void quick_sort(int *array, size_t size);
 
-listint_t *array_to_list(int *array, size_t n);
-
-listint_t *add_dnodeint_end(listint_t **head, const int n);
-
 #endif
