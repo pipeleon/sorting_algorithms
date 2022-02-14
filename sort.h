@@ -14,7 +14,7 @@
  */
 typedef struct listint_s
 {
-	int n;
+	const int n;
 	struct listint_s *prev;
 	struct listint_s *next;
 } listint_t;
@@ -31,7 +31,7 @@ void selection_sort(int *array, size_t size);
 
 void quick_sort(int *array, size_t size);
 
-listint_t *array_to_list(int *array);
+listint_t *array_to_list(int *array, size_t n);
 
 listint_t *add_dnodeint_end(listint_t **head, const int n);
 

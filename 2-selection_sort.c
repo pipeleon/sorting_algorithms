@@ -7,14 +7,16 @@
  *
  * Return: listint_t
  */
-listint_t *array_to_list(int *array)
+listint_t *array_to_list(int *array, size_t n)
 {
-	int i;
-	listint_t *head = NULL;
+	size_t i;
+	listint_t *new;
 
-	for (i = 0; array[i]; i++)
-		add_dnodeint_end(&head, array[i]);
-	return (head);
+	new = NULL;
+	for (i = 0; i < n; i++)
+		add_dnodeint_end(&new, array[i]);
+	
+	return (new);
 }
 
 /**
@@ -28,12 +30,15 @@ listint_t *add_dnodeint_end(listint_t **head, int n)
 {
 	listint_t *new;
 	listint_t *current;
+	int *tmp;
 	
 	current = *head;
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
 		return (NULL);
-	new->n = n;
+	tmp = (int *)&new->n;
+	*tmp = n;
+	
 	new->next = NULL;
 	if (*head == NULL)
 	{
@@ -57,8 +62,31 @@ listint_t *add_dnodeint_end(listint_t **head, int n)
  * @size: Size of the array
  *
  * Return: void
-
+*/
 void selection_sort(int *array, size_t size)
 {
+	size_t i, j, k = 0;
+	int tmp, tmp2;
+
+	for (i = 0; i < size; i++)
+	{
+		tmp = array[i];
+		for (j = i + 1; j < size; j++)
+		{
+			if (tmp > array[j])
+			{
+				tmp = array[j];
+				k = j;
+			}
+		}
+		if (k > 0)
+		{
+			tmp2 = array[i];
+			array[i] = tmp;
+			array[k] = tmp2;
+		}
+		print_array(array, size);
+		k = 0;
+	}
 }
-*/
+
