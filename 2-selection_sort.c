@@ -4,7 +4,7 @@
 /**
  * array_to_list - creates a listint_t based on an array
  * @array: Array to sort
- *
+ * @n: Array size
  * Return: listint_t
  */
 listint_t *array_to_list(int *array, size_t n)
@@ -15,7 +15,6 @@ listint_t *array_to_list(int *array, size_t n)
 	new = NULL;
 	for (i = 0; i < n; i++)
 		add_dnodeint_end(&new, array[i]);
-	
 	return (new);
 }
 
@@ -31,14 +30,13 @@ listint_t *add_dnodeint_end(listint_t **head, int n)
 	listint_t *new;
 	listint_t *current;
 	int *tmp;
-	
+
 	current = *head;
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
 		return (NULL);
 	tmp = (int *)&new->n;
 	*tmp = n;
-	
 	new->next = NULL;
 	if (*head == NULL)
 	{
