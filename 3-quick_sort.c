@@ -11,26 +11,26 @@
  */
 int partition(int *array, int high, int low, size_t size)
 {
-    int pivot, i, j, tmp;
+	int pivot, i, j, tmp;
 
-    pivot = array[high];
-    i = low - 1;
+	pivot = array[high];
+	i = low - 1;
 
-    for (j = low; j < high; j++)
-    {
-        if (pivot >= array[j])
-        {
-            i++;
-            tmp = array[i];
-            array[i] = array[j];
-            array[j] = tmp;
-        }
-    }
-    tmp = array[i + 1];
-    array[i + 1] = array[high];
-    array[high] = tmp;
-    print_array(array, size);
-    return (i + 1);
+	for (j = low; j < high; j++)
+	{
+		if (pivot >= array[j])
+		{
+			i++;
+			tmp = array[i];
+			array[i] = array[j];
+			array[j] = tmp;
+		}
+	}
+	tmp = array[i + 1];
+	array[i + 1] = array[high];
+	array[high] = tmp;
+	print_array(array, size);
+	return (i + 1);
 }
 
 /**
@@ -43,14 +43,14 @@ int partition(int *array, int high, int low, size_t size)
  */
 void lomuto(int *array, int high, int low, size_t size)
 {
-    int i;
+	int i;
 
-    if (low < high)
-    {
-        i = partition(array, high, low, size);
-        lomuto(array, i - 1, low, size);
-        lomuto(array, high, i + 1, size);
-    }
+	if (low < high)
+	{
+		i = partition(array, high, low, size);
+		lomuto(array, i - 1, low, size);
+		lomuto(array, high, i + 1, size);
+	}
 }
 
 /**
@@ -61,10 +61,10 @@ void lomuto(int *array, int high, int low, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-    int high, low;
+	int high, low;
 
-    low = 0;
-    high = size - 1;
+	low = 0;
+	high = size - 1;
 
-    lomuto(array, high, low, size);
+	lomuto(array, high, low, size);
 }
