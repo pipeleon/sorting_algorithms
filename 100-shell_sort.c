@@ -14,6 +14,9 @@ void shell_sort(int *array, size_t size)
 
     n = (int)size;
 
+    if (array == NULL)
+        return;
+
     for (i = 0; ; i++)
     {
         if (gap[i] > n)
