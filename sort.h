@@ -39,4 +39,10 @@ void counting_sort(int *array, size_t size);
 
 void merge_sort(int *array, size_t size);
 
+void heap_sort(int *array, size_t size);
+
+void sift_down(int *array, int parentI, int end, size_t n);
+
+void heapify(int *array, int n);
+
 #endif
