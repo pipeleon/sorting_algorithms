@@ -10,31 +10,31 @@
 */
 void heapify(int *array, int n)
 {
-    int i, root, maxI, parentI, tmp;
+	int i, root, maxI, parentI, tmp;
 
-    i = n;
-    root = 0;
+	i = n;
+	root = 0;
 
-    while (i > root)
-    {
-        maxI = i;
-        if (i % 2 == 0)
-        {
-            i--;
-            if (array[i] > array[maxI])
-                maxI = i;
-        }
-        parentI = (i - 1) / 2;
-        if (array[maxI] > array[parentI])
-        {
-            tmp = array[parentI];
-            array[parentI] = array[maxI];
-            array[maxI] = tmp;
-            print_array(array, n);
-            sift_down(array, maxI, n - 1, n);
-        }
-        i--;
-    }
+	while (i > root)
+	{
+		maxI = i;
+		if (i % 2 == 0)
+		{
+			i--;
+			if (array[i] > array[maxI])
+				maxI = i;
+		}
+		parentI = (i - 1) / 2;
+		if (array[maxI] > array[parentI])
+		{
+			tmp = array[parentI];
+			array[parentI] = array[maxI];
+			array[maxI] = tmp;
+			print_array(array, n);
+			sift_down(array, maxI, n - 1, n);
+		}
+		i--;
+	}
 }
 
 /**
@@ -48,32 +48,31 @@ void heapify(int *array, int n)
 */
 void sift_down(int *array, int parentI, int end, size_t n)
 {
-    int left, right, maxI, tmp;
+	int left, right, maxI, tmp;
 
-    while (parentI < end)
-    {
-        left = (parentI * 2) + 1;
-        right = (parentI * 2) + 2;
-        maxI =  parentI;
-        if (left > end)
-            break;
-        
-        if (right <= end)
-            maxI = right;
-        if (array[left] > array[maxI])
-            maxI = left;
+	while (parentI < end)
+	{
+		left = (parentI * 2) + 1;
+		right = (parentI * 2) + 2;
+		maxI =  parentI;
+		if (left > end)
+			break;
+		if (right <= end)
+			maxI = right;
+		if (array[left] > array[maxI])
+			maxI = left;
 
-        if (array[maxI] > array[parentI])
-        {
-            tmp = array[parentI];
-            array[parentI] = array[maxI];
-            array[maxI] = tmp;
-            parentI = maxI;
-            print_array(array, n);
-        }
-        else
-            break;        
-    }
+		if (array[maxI] > array[parentI])
+		{
+			tmp = array[parentI];
+			array[parentI] = array[maxI];
+			array[maxI] = tmp;
+			parentI = maxI;
+			print_array(array, n);
+		}
+		else
+			break;
+	}
 }
 
 /**
@@ -85,21 +84,21 @@ void sift_down(int *array, int parentI, int end, size_t n)
 */
 void heap_sort(int *array, size_t size)
 {
-    int n, i, root, tmp;
+	int n, i, root, tmp;
 
-    n = (int)size;
-    heapify(array, n);
-    i = n - 1;
-    root = 0;
+	n = (int)size;
+	heapify(array, n);
+	i = n - 1;
+	root = 0;
 
-    while (i > root)
-    {
-        tmp = array[i];
-        array[i] = array[root];
-        array[root] = tmp;        
-        n--;
-        print_array(array, size);
-        sift_down(array, root, n - 1, size);
-        i--;
-    }
+	while (i > root)
+	{
+		tmp = array[i];
+		array[i] = array[root];
+		array[root] = tmp;
+		n--;
+		print_array(array, size);
+		sift_down(array, root, n - 1, size);
+		i--;
+	}
 }
